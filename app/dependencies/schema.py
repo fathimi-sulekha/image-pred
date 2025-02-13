@@ -1,5 +1,4 @@
 from pydantic import BaseModel
- 
-class YearRequest(BaseModel):
-    year: int
-    string: str
+
+class TextRequest(BaseModel):
+    prompt: str

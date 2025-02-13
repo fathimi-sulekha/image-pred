@@ -5,10 +5,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Settings:
-    OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
-    #OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "*****")  # Replace with actual API key
-    REDIS_HOST = os.getenv("REDIS_HOST", "localhost")  # Default to localhost
-    REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))  # Convert to integer
+    OPENAI_API_KEY: str = "*****"
+    REDIS_HOST: str = os.getenv("REDIS_HOST", "localhost")
+    REDIS_PORT: int = int(os.getenv("REDIS_PORT", 6379))
 
-# Create a global settings instance
 settings = Settings()
+
+if not settings.OPENAI_API_KEY:
+    raise ValueError("❌ OPENAI_API_KEY is not set. Please check your .env file or environment variables.")
